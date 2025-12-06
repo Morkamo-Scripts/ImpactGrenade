@@ -36,6 +36,7 @@
     <ItemGroup>
         <Reference Include="0Harmony, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>packages\Lib.Harmony.2.2.2\lib\net48\0Harmony.dll</HintPath>
+            <Private>false</Private>
         </Reference>
         <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
             <HintPath>packages\ExMod.Exiled.9.10.2\lib\net48\Assembly-CSharp-Publicized.dll</HintPath>
@@ -79,6 +80,7 @@
         </Reference>
         <Reference Include="LabApi, Version=1.1.1.0, Culture=neutral, processorArchitecture=Amd64">
           <HintPath>packages\Northwood.LabAPI.1.1.1\lib\net48\LabApi.dll</HintPath>
+            <Private>false</Private>
         </Reference>
         <Reference Include="Mirror">
           <HintPath>..\Libs\Mirror.dll</HintPath>
@@ -118,7 +120,7 @@
         </Reference>
         <Reference Include="UnityEngine.CoreModule">
             <HintPath>..\Libs\UnityEngine.CoreModule.dll</HintPath>
-            <Private>false</Private>
+            <Private>false</Private> 
         </Reference>
         <Reference Include="UnityEngine.PhysicsModule">
             <HintPath>..\Libs\UnityEngine.PhysicsModule.dll</HintPath>
@@ -126,6 +128,7 @@
         </Reference>
         <Reference Include="YamlDotNet, Version=11.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
           <HintPath>packages\YamlDotNet.11.0.1\lib\net45\YamlDotNet.dll</HintPath>
+            <Private>false</Private>
         </Reference>
     </ItemGroup>
     <ItemGroup>

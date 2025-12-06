@@ -1,16 +1,22 @@
 ﻿using System.ComponentModel;
 using Exiled.API.Enums;
 using Exiled.API.Features;
+using Exiled.API.Features.Items;
 using Exiled.CustomItems.API.Features;
+using Exiled.Events.EventArgs.Map;
 using Exiled.Events.EventArgs.Player;
 using ImpactGrenade.Components;
+using InventorySystem.Items.ThrowableProjectiles;
+using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Arguments.ServerEvents;
 using RueI.API;
 using RueI.API.Elements;
 using UnityEngine;
+using Utils;
 using Pickup = Exiled.API.Features.Pickups.Pickup;
 using exVents = Exiled.Events.Handlers;
 using labVents = LabApi.Events.Handlers;
+using Map = LabApi.Features.Wrappers.Map;
 
 namespace ImpactGrenade
 {
@@ -99,9 +105,7 @@ namespace ImpactGrenade
             if (Check(ev.Projectile))
             {
                 var listener = ev.Projectile.GameObject.AddComponent<ImpactListener>();
-                listener.Projectile = ev.Projectile;
-                listener.ImpactGrenade = this;
-                listener.Player = ev.Player;
+                listener.ev = ev;
             }
         }
 
@@ -139,7 +143,7 @@ namespace ImpactGrenade
                     anchor.Transform.SetParent(pickup.Transform);
                     anchor.Spawn();
                     
-                    Log.Warn("Highlight color is not correct! Using default color...");
+                    Log.Warn("Установлен некорректный цвет подсветки, выбор значения по умолчанию..."); 
                 }
             }
         }
