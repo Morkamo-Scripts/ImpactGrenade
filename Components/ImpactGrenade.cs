@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using Exiled.API.Enums;
 using Exiled.API.Features.Spawn;
 using Exiled.CustomItems.API.Features;
@@ -29,9 +30,11 @@ namespace ImpactGrenade.Components
         public abstract ushort PickupMessageVerticalPosition { get; set; }
         public abstract ushort SelectMessageVerticalPosition { get; set; }
 
-        public HashSet<RoleTypeId> GiveOnSpawnRoles { get; set; } = new HashSet<RoleTypeId>()
+        [Description("{Role} : {Chance}")]
+        public Dictionary<RoleTypeId, byte> GiveOnSpawnRoles { get; set; } = new()
         {
-            RoleTypeId.NtfSpecialist
+            [RoleTypeId.NtfSpecialist] = 100,
+            [RoleTypeId.ChaosMarauder] = 30,
         };
     }
 }

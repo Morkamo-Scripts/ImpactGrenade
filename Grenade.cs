@@ -91,9 +91,12 @@ namespace ImpactGrenade
 
         private void OnSpawned(SpawnedEventArgs ev)
         {
-            if (!GiveOnSpawnRoles.Contains(ev.Player.Role))
+            if (!GiveOnSpawnRoles.TryGetValue(ev.Player.Role, out byte chance))
                 return;
-            
+
+            if (UnityEngine.Random.Range(1, 101) > chance)
+                return;
+
             if (!ev.Player.IsInventoryFull)
                 CustomItem.TryGive(ev.Player, Id, false);
             else
@@ -105,7 +108,7 @@ namespace ImpactGrenade
             if (Check(ev.Projectile))
             {
                 var listener = ev.Projectile.GameObject.AddComponent<ImpactListener>();
-                listener.ev = ev;
+                listener.Ev = ev;
             }
         }
 

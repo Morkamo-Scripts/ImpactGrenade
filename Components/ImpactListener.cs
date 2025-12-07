@@ -18,7 +18,7 @@ namespace ImpactGrenade.Components
 {
     public class ImpactListener : MonoBehaviour
     {
-        public ThrownProjectileEventArgs ev;
+        public ThrownProjectileEventArgs Ev;
         public ImpactGrenade ImpactGrenade { get; set; }
         public bool BlockProcessing { get; set; }
 
@@ -54,23 +54,23 @@ namespace ImpactGrenade.Components
             
             BlockProcessing = false;
         }
-        
-        bool hited  = false;
+
+        private bool _hited;
         
         private void OnCollisionEnter(Collision collision)
         {
             if (BlockProcessing)
                 return;
 
-            ev.Throwable.Destroy();
-            ev.Projectile.Destroy();
-            ev.Item.Destroy();
-            ev.Pickup.Destroy();
+            Ev.Throwable.Destroy();
+            Ev.Projectile.Destroy();
+            Ev.Item.Destroy();
+            Ev.Pickup.Destroy();
             
-            if (hited == false)
+            if (_hited == false)
             {
-                ExplosionUtils.ServerExplode(collision.contacts[0].point, ev.Player.Footprint, ExplosionType.Grenade);
-                hited = true;
+                ExplosionUtils.ServerExplode(collision.contacts[0].point, Ev.Player.Footprint, ExplosionType.Grenade);
+                _hited = true;
             }
         }
     }
